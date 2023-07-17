@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+		
+        <h1>Tasks</h1>
+	    <ul>
+		    {% for task in tasks %}
+			    <li>{{ task }}</li>
+			{% empty %}
+			    <li>No tasks.</li>
+			{% endfor %}
+		</ul>
+		<a href="{% url 'tasks:add' %}">Add a New Task</a>
+{% endblock %}
